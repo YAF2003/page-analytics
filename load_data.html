@@ -1,0 +1,29 @@
+<?php
+include 'db.php';
+$sql = "SELECT * FROM actions ";
+$result = mysqli_query($link, $sql);
+$row_num = mysqli_num_rows($result);
+        $count = 0;
+            if(mysqli_num_rows($result) > 0){
+                while($row = mysqli_fetch_array($result)){
+                    $count++;
+                    echo '
+                        <tr>
+                            <td>'.$count.'</td>
+                            <td>'.$row['ip'].'</td>
+                            <td>'.$row['os'].'</td>
+                            <td>'.$row['browser'].'</td>
+                            <td>'.$row['os_bit'].'</td>
+                            <td>'.$row['page_name'].'</td>
+                            <td>'.$row['origin'].'</td>
+                            <td>'.$row['url'].'</td>
+                            <td>'.$row['pathname'].'</td>
+                            <td>'.$row['date'].'</td>
+                            <td>'.$row['time'].'</td>
+                        </tr>
+                    ';
+                }
+            }else{
+                echo '<tr><td colspan="11" style="color: #C10031;text-align: center;">Cannot Found Data!</td></tr>';
+            }
+    ?>
